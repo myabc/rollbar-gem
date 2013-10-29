@@ -268,7 +268,7 @@ module Rollbar
     end
 
     def send_payload_using_eventmachine(payload)
-      req = EventMachine::HttpRequest.new(configuration.endpoint).post(:body => payload)
+      req = EventMachine::HttpRequest.new(configuration.endpoint, configuration.connection_opts).post(:body => payload)
       req.callback do
         if req.response_header.status == 200
           log_info '[Rollbar] Success'
