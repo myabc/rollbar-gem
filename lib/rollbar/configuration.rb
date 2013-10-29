@@ -11,6 +11,7 @@ module Rollbar
     attr_accessor :default_logger
     attr_accessor :enabled
     attr_accessor :endpoint
+    attr_accessor :connection_opts
     attr_accessor :environment
     attr_accessor :exception_level_filters
     attr_accessor :filepath
@@ -41,6 +42,7 @@ module Rollbar
       @default_logger = lambda { Logger.new(STDERR) }
       @enabled = nil  # set to true when configure is called
       @endpoint = DEFAULT_ENDPOINT
+      @connection_opts = {}
       @environment = nil
       @exception_level_filters = {
         'ActiveRecord::RecordNotFound' => 'warning',
